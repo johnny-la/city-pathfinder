@@ -27,7 +27,7 @@ public class CityGenerator : MonoBehaviour
     // The width/height of a building
     private float buildingSize;
 
-    public void Start()
+    public void Awake()
     {
         // Compute the dimensions of the city
         Rows = (int)(citySize / cellSize);

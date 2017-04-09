@@ -2,67 +2,125 @@
 using System.Collections;
 using System.Collections.Generic;
 
-/// <summary>
-/// Represents a node in the pathfinding graph
-/// </summary>
-public class Node : MonoBehaviour
-{
-    public Node[] neighbourList;
-    // The node's neighbours
-    private List<Node> neighbours = new List<Node>();
+//The unit by which all pathfinding is done. Defines walkable or unwalkable space
+public class Node {
 
-    // Caches the node's components
-    private new Transform transform;
+    //Variables for preprocessing the grid
+    public bool walkable; 
+    public bool inCluster { get; set; }
+    public int clusterIndex { get; set; }
 
-    public void Start()
+    //Used in finding entrances
+    public bool exploredNS { get; set; }
+    public bool exploredWE { get; set; }
+
+    //For use when trying to get adjacent nodes in a grid
+    public Vector3 worldPosition;
+	public int gridX;
+	public int gridY;
+
+    //Variables for pathfinding
+    public float FgCost;
+    public float FhCost;
+
+	public int gCost;
+	public int hCost;
+	public Node parent;
+	int heapIndex;
+
+    public List<Node> neighbours = new List<Node>();
+
+    public Dictionary<Node, Edge> edges = new Dictionary<Node, Edge>();
+
+
+    public Node(bool _walkable, Vector3 _worldPos, int _gridX, int _gridY) {
+		walkable = _walkable;
+		worldPosition = _worldPos;
+		gridX = _gridX;
+		gridY = _gridY;
+        clusterIndex = -1;
+        exploredNS = false;
+        exploredWE = false;
+	}
+
+    //Adds node and an edge to neighbour collection and dictionary respectively, if not already added
+    public void AddEdge(Node n, Edge e)
     {
-        transform = GetComponent<Transform>();
-
-        if (neighbourList != null)
-        {
-            for (int i = 0; i < neighbourList.Length; i++)
-            {
-                neighbours.Add(neighbourList[i]);
-            }
+        if (!edges.ContainsKey(n)) { 
+            neighbours.Add(n);
+            edges.Add(n, e);
         }
     }
 
-	/// <summary>
-	/// Add the node to the list of neighbours
-	/// </summary>
-    public void AddNeighbour(Node node)
+    //Checks if neighbour has alreayd been added to current node
+    public bool hasNeighbour(Node neighbour)
     {
-        if (node == null) { return; }
-
-        neighbours.Add(node);
+        return neighbours.Contains(neighbour);
     }
 
-    /// <summary>
-    /// Returns the node's position in world space
-    /// </summary>
-    public Vector3 GetPosition()
+    //Gets distance from current node to a neighbour
+    public float distanceToNeighbour(Node neighbour)
     {
-        return transform.position;
+        return edges[neighbour].distance;
     }
 
-    /// <summary>
-    /// True if the node was visited in a pathfinding algorithm
-    /// </summary>
-    public bool Visited
+    //Resets all info changed from pathfinding just in case
+    public void Reset()
     {
-        get; set;
+        gCost = 0;
+        hCost = 0;
+        heapIndex = 0;
+        parent = null;
+        FgCost = 0;
+        FhCost = 0;
     }
 
-    /// <summary>
-    /// The node's neighbours
-    /// </summary>
-    public List<Node> Neighbours
+    //F costs in int and float form
+	public int fCost {
+		get {
+			return gCost + hCost;
+		}
+	}
+
+    public float FfCost
     {
-        get { return neighbours; }
+        get
+        {
+            return FgCost + FhCost;
+        }
     }
 
-    public string ToString()
+    //Index for sorting purposes when stored in the heap
+    public int HeapIndex {
+		get {
+			return heapIndex;
+		}
+		set {
+			heapIndex = value;
+		}
+	}
+
+	//If current node has less fcost than nodeToCompare, return a negative
+	//else if more, return a positive
+	//if same, compare hcosts as a tiebreaker
+	public int CompareTo(Node nodeToCompare) {
+		int compare = fCost.CompareTo(nodeToCompare.fCost);
+		if (compare == 0) {
+			compare = hCost.CompareTo(nodeToCompare.hCost);
+		}
+		return compare;
+    }
+
+    //If current node has less fcost than nodeToCompare, return a negative
+    //else if more, return a positive
+    //if same, compare hcosts as a tiebreaker
+    public float FCompareTo(Node nodeToCompare)
     {
-        return GetPosition().ToString();
+        float compare = FfCost.CompareTo(nodeToCompare.FfCost);
+        if (compare == 0)
+        {
+            compare = FhCost.CompareTo(nodeToCompare.FhCost);
+        }
+        return compare;
     }
 }
