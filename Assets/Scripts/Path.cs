@@ -5,7 +5,8 @@ using System;
 using System.Diagnostics;
 
 //This class does pathfinding for us
-public class Path : MonoBehaviour {
+public class Path : MonoBehaviour
+{
 
     Grid grid;
     public Transform start;
@@ -14,11 +15,13 @@ public class Path : MonoBehaviour {
     public float HPADistance = 0.0f;
     public float AStarDistance = 0.0f;
 
-    void Awake() {
+    void Awake()
+    {
         grid = GetComponent<Grid>();
     }
 
-    void Start() {
+    void Start()
+    {
 
     }
 
@@ -36,10 +39,12 @@ public class Path : MonoBehaviour {
 
 
     //Finds a path between two points using A*, returns the path of nodes to get there
-    public List<Node> FindPath(Vector3 startPos, Vector3 endPos, bool stopWatch) {
+    public List<Node> FindPath(Vector3 startPos, Vector3 endPos, bool stopWatch)
+    {
 
         Stopwatch timer = new Stopwatch();
-        if (stopWatch) {
+        if (stopWatch)
+        {
             timer.Start();
         }
 
@@ -56,14 +61,16 @@ public class Path : MonoBehaviour {
         startNode.Reset();
 
         //While there are still nodes to be explored
-        while (openSet.Count > 0) {
+        while (openSet.Count > 0)
+        {
 
             //Get the most promising node, add it to our list of already explored nodes
             Node currentNode = openSet.RemoveFirst();
             closedSet.Add(currentNode);
 
             //If we reach our destination return our path
-            if (currentNode == endNode) {
+            if (currentNode == endNode)
+            {
                 if (stopWatch)
                 {
                     timer.Stop();
@@ -74,10 +81,12 @@ public class Path : MonoBehaviour {
             }
 
             //For each neighbour:
-            foreach (Node neighbour in grid.GetNeighbours(currentNode)) {
+            foreach (Node neighbour in grid.GetNeighbours(currentNode))
+            {
 
                 //Skip nodes we can't walk on or are already explored.
-                if (!neighbour.walkable || closedSet.Contains(neighbour)) {
+                if (!neighbour.walkable || closedSet.Contains(neighbour))
+                {
                     continue;
                 }
 
@@ -96,13 +105,15 @@ public class Path : MonoBehaviour {
                 float newCostToNeighbour = currentNode.FgCost + edgeCost;
 
                 //If neighbour has not be explored yet or we obtained a better route to it, update the node's gCost and hCost, as well as its parent
-                if (newCostToNeighbour < neighbour.FgCost || !openSet.Contains(neighbour)) {
+                if (newCostToNeighbour < neighbour.FgCost || !openSet.Contains(neighbour))
+                {
                     neighbour.FgCost = newCostToNeighbour;
                     neighbour.FhCost = GetDistance(neighbour, endNode);
                     neighbour.parent = currentNode;
 
                     //Add to open set if not already explored
-                    if (!openSet.Contains(neighbour)) {
+                    if (!openSet.Contains(neighbour))
+                    {
                         openSet.Add(neighbour);
                     }
                     else {
@@ -118,12 +129,14 @@ public class Path : MonoBehaviour {
     }
 
     //Gives us a list of paths from the start to end Node. Assumes that path to endNode already found
-    List<Node> RetracePath(Node startNode, Node endNode) {
+    List<Node> RetracePath(Node startNode, Node endNode)
+    {
         List<Node> path = new List<Node>();
         Node currentNode = endNode;
 
         //Keep going to the node's parents until we reach the start
-        while (currentNode != startNode) {
+        while (currentNode != startNode)
+        {
             path.Add(currentNode);
             currentNode = currentNode.parent;
         }
@@ -135,7 +148,8 @@ public class Path : MonoBehaviour {
 
     //Does HPA pathfinding. Assumes that the grid has already been prepared
     //Returns a path of nodes connected on the abstract graph (not by the grid)
-    public List<Node> FindPathHPA(Vector3 startPos, Vector3 endPos) {
+    public List<Node> FindPathHPA(Vector3 startPos, Vector3 endPos)
+    {
         //connect endNode and startNode to graph
 
         Node startNode = grid.NodeFromWorldPoint(startPos);
@@ -214,7 +228,7 @@ public class Path : MonoBehaviour {
                 endNode.AddEdge(n, tempEdge);
 
                 temp.Reverse();
-                
+
 
                 Edge tempEdge2 = new Edge(n, endNode);
                 tempEdge2.path = temp;
@@ -222,62 +236,68 @@ public class Path : MonoBehaviour {
                 n.AddEdge(endNode, tempEdge2);
             }
         }
-    
-
-    //Now do A* on our new graph
-    FNodeHeap openSet = new FNodeHeap(200);
-    HashSet<Node> closedSet = new HashSet<Node>();
-    openSet.Add(startNode);
-    startNode.Reset();
 
 
-	while (openSet.Count > 0) {
-		Node currentNode = openSet.RemoveFirst();
-        closedSet.Add(currentNode);
+        //Now do A* on our new graph
+        FNodeHeap openSet = new FNodeHeap(200);
+        HashSet<Node> closedSet = new HashSet<Node>();
+        openSet.Add(startNode);
+        startNode.Reset();
 
-		if (currentNode == endNode) {
-            HPADistance = currentNode.FgCost;
-        	return RetracePath(startNode, endNode);
-		}
 
-		foreach (Node neighbour in currentNode.neighbours) {
-			if (!neighbour.walkable || closedSet.Contains(neighbour)) {
-					continue;
-			}
+        while (openSet.Count > 0)
+        {
+            Node currentNode = openSet.RemoveFirst();
+            closedSet.Add(currentNode);
 
-			float newCostToNeighbour = currentNode.FgCost + currentNode.distanceToNeighbour(neighbour);
-				if (newCostToNeighbour < neighbour.FgCost || !openSet.Contains(neighbour)) {
-					neighbour.FgCost = newCostToNeighbour;
-					neighbour.FhCost = GetDistance(neighbour, endNode);
+            if (currentNode == endNode)
+            {
+                HPADistance = currentNode.FgCost;
+                return RetracePath(startNode, endNode);
+            }
+
+            foreach (Node neighbour in currentNode.neighbours)
+            {
+                if (!neighbour.walkable || closedSet.Contains(neighbour))
+                {
+                    continue;
+                }
+
+                float newCostToNeighbour = currentNode.FgCost + currentNode.distanceToNeighbour(neighbour);
+                if (newCostToNeighbour < neighbour.FgCost || !openSet.Contains(neighbour))
+                {
+                    neighbour.FgCost = newCostToNeighbour;
+                    neighbour.FhCost = GetDistance(neighbour, endNode);
                     neighbour.parent = currentNode;
 
-					if (!openSet.Contains(neighbour)){
-						openSet.Add(neighbour);
-					}
-					else {
-						openSet.UpdateItem(neighbour);
-					}
-				}
-			}
-		}
+                    if (!openSet.Contains(neighbour))
+                    {
+                        openSet.Add(neighbour);
+                    }
+                    else {
+                        openSet.UpdateItem(neighbour);
+                    }
+                }
+            }
+        }
 
         return null;
 
-}
-    
+    }
 
-   
-//Heuristic for all our A* like searches, uses Euclidean Distance from the goal		
-int GetDistance(Node nodeA, Node nodeB) {
-	int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
-	int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
 
-        /*if (dstX > dstY)
-			return 14*dstY + 10*(dstX-dstY);
-		return 14*dstX + 10*(dstY-dstX);
 
-        */
-        return dstX * dstX + dstY * dstY;
-	}   
+    //Heuristic for all our A* like searches, uses Diagonal Distance from the goal		
+    float GetDistance(Node nodeA, Node nodeB)
+    {
+        float dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
+        float dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
+
+        float sideCost = 1.0f;
+        float diagonalCost = 1.414f;
+
+        return sideCost * (dstX + dstY) + (diagonalCost - 2 * sideCost) * Mathf.Min(dstX, dstY);
+
+    }
 }
 
