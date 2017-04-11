@@ -37,6 +37,7 @@ public class Path : MonoBehaviour
 
     }
 
+    //Gets total length of path
     private float getDistance(List<Node> path, bool AStar)
     {
         float distance = 0;
@@ -46,8 +47,11 @@ public class Path : MonoBehaviour
                 distance += Vector3.Distance(path[i].worldPosition,path[i+1].worldPosition);
             }
         } else {
+
+            //For each node in the path, figure out the cost to get to the next node in the path
             for (int i = 0; i < path.Count - 1; i++)
             {
+                //To calculate the cost, add up the distances between every consecutive node in the edge node list
                 float tempDistance = 0.0f;
                 List<Node> temp2 = path[i].edges[path[i+1]].path;
                 for (int j = 0; j < temp2.Count - 1; j++){
