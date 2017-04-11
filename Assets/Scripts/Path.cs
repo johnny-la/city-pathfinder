@@ -32,9 +32,31 @@ public class Path : MonoBehaviour
         grid.pathAStar = FindPath(start.position, end.position, true);
         grid.pathHPA = FindPathHPA(start.position, end.position);
         grid.getTotalDistance();
-        print("AStar path has distance of " + AStarDistance);
-        print("HPA path has distance of " + HPADistance);
+        print("AStar path has distance of " + getDistance(grid.pathAStar, true));//AStarDistance);
+        print("HPA path has distance of " + getDistance(grid.pathHPA, false));//HPADistance);
 
+    }
+
+    private float getDistance(List<Node> path, bool AStar)
+    {
+        float distance = 0;
+        if (AStar){
+            for (int i = 0; i < path.Count - 1; i++)
+            {
+                distance += Vector3.Distance(path[i].worldPosition,path[i+1].worldPosition);
+            }
+        } else {
+            for (int i = 0; i < path.Count - 1; i++)
+            {
+                float tempDistance = 0.0f;
+                List<Node> temp2 = path[i].edges[path[i+1]].path;
+                for (int j = 0; j < temp2.Count - 1; j++){
+                    tempDistance += Vector3.Distance(temp2[j].worldPosition,temp2[j+1].worldPosition);
+                }
+                distance += tempDistance;
+            }
+        }
+        return distance;
     }
 
 
@@ -53,7 +75,7 @@ public class Path : MonoBehaviour
         Node endNode = grid.NodeFromWorldPoint(endPos);
 
         //Use a heap to store our nodes yet to be explored
-        FNodeHeap openSet = new FNodeHeap(200);
+        FNodeHeap openSet = new FNodeHeap(2000);
         HashSet<Node> closedSet = new HashSet<Node>();
 
         //Start exploring with our start node
@@ -172,7 +194,7 @@ public class Path : MonoBehaviour
                 Node currentNode = startNode;
 
                 float tempDistance = 0.0f;
-                for (int f = 0; f < temp.Count; f++)
+                for (int f = 1; f < temp.Count; f++)
                 {
 
                     if (currentNode.gridX != temp[f].gridX && currentNode.gridY != temp[f].gridY)
@@ -209,7 +231,7 @@ public class Path : MonoBehaviour
                 Node currentNode = endNode;
 
                 float tempDistance = 0.0f;
-                for (int f = 0; f < temp.Count; f++)
+                for (int f = 1; f < temp.Count; f++)
                 {
                     if (currentNode.gridX != temp[f].gridX && currentNode.gridY != temp[f].gridY)
                     {
@@ -239,7 +261,7 @@ public class Path : MonoBehaviour
 
 
         //Now do A* on our new graph
-        FNodeHeap openSet = new FNodeHeap(200);
+        FNodeHeap openSet = new FNodeHeap(2000);
         HashSet<Node> closedSet = new HashSet<Node>();
         openSet.Add(startNode);
         startNode.Reset();

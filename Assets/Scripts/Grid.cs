@@ -313,7 +313,7 @@ public class Grid : MonoBehaviour {
                         //Calculate edge cost between them
                         Node currentNode = n;
                         float tempDistance = 0.0f;
-                        for (int f = 0; f < temp.Count; f++)
+                        for (int f = 1; f < temp.Count; f++)
                         {
 
                             if (currentNode.gridX != temp[f].gridX && currentNode.gridY != temp[f].gridY)
@@ -387,7 +387,9 @@ public class Grid : MonoBehaviour {
         //Make the two nodes neighbours by adding an edge between them
         Edge tempEdge = new Edge(a, b);
         Edge symmEdge = new Edge(b, a);
+        tempEdge.path.Add(a);
         tempEdge.path.Add(b);
+        symmEdge.path.Add(b);
         symmEdge.path.Add(a);
         tempEdge.distance = entranceDistance;
         symmEdge.distance = entranceDistance;
