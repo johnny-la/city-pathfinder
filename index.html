@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Web App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-rocket"></i>
+                <span>WebApp</span>
+            </div>
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+            </div>
+            <p class="loading-text">Creating amazing experiences...</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="nav">
+                <div class="logo">
+                    <i class="fas fa-rocket"></i>
+                    <span>WebApp</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#portfolio" class="nav-link">Portfolio</a>
+                    <a href="#pricing" class="nav-link">Pricing</a>
+                    <a href="#team" class="nav-link">Team</a>
+                    <a href="#blog" class="nav-link">Blog</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Beautiful Web
+                    <span class="gradient-text">Experience</span>
+                </h1>
+                <p class="hero-description">
+                    A modern, responsive web application with stunning design and smooth interactions.
+                    Built with love and attention to detail.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-play"></i>
+                        Get Started
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i>
+                        Learn More
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card">
+                    <div class="card-header">
+                        <div class="card-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="code-line">
+                            <span class="code-keyword">const</span>
+                            <span class="code-variable">app</span>
+                            <span class="code-operator">=</span>
+                            <span class="code-string">'amazing'</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="code-keyword">function</span>
+                            <span class="code-function">createMagic</span>
+                            <span class="code-bracket">()</span>
+                            <span class="code-bracket">{</span>
+                        </div>
+                        <div class="code-line indent">
+                            <span class="code-keyword">return</span>
+                            <span class="code-string">'✨ Beautiful UI'</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="code-bracket">}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="section-header">
+                <h2 class="section-title">Amazing Features</h2>
+                <p class="section-description">Everything you need for a modern web experience</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="feature-title">Beautiful Design</h3>
+                    <p class="feature-description">Crafted with attention to detail and modern design principles</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Responsive</h3>
+                    <p class="feature-description">Looks perfect on all devices, from mobile to desktop</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Fast & Smooth</h3>
+                    <p class="feature-description">Optimized performance with smooth animations</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3 class="feature-title">Dark Mode</h3>
+                    <p class="feature-description">Switch between light and dark themes seamlessly</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="1000">0</div>
+                    <div class="stat-label">Happy Users</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="50">0</div>
+                    <div class="stat-label">Features</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="99">0</div>
+                    <div class="stat-label">Uptime %</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="24">0</div>
+                    <div class="stat-label">Support</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="portfolio">
+            <div class="section-header">
+                <h2 class="section-title">Our Work</h2>
+                <p class="section-description">Showcasing our latest projects and achievements</p>
+            </div>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Design</button>
+                <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder web-placeholder">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>E-commerce Platform</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="portfolio-btn" data-lightbox="portfolio1">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="portfolio-btn">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Modern E-commerce</h3>
+                        <p>Full-stack e-commerce solution with modern design</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder mobile-placeholder">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Fitness Tracker</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="portfolio-btn" data-lightbox="portfolio2">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="portfolio-btn">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Fitness Mobile App</h3>
+                        <p>Cross-platform fitness tracking application</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="branding">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder branding-placeholder">
+                            <i class="fas fa-paint-brush"></i>
+                            <span>Brand Identity</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="portfolio-btn" data-lightbox="portfolio3">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="portfolio-btn">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Tech Startup Branding</h3>
+                        <p>Complete brand identity for innovative startup</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder web-placeholder">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Analytics Dashboard</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="portfolio-btn" data-lightbox="portfolio4">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="portfolio-btn">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Analytics Platform</h3>
+                        <p>Real-time data visualization dashboard</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder mobile-placeholder">
+                            <i class="fas fa-comments"></i>
+                            <span>Chat Application</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="portfolio-btn" data-lightbox="portfolio5">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="portfolio-btn">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Messaging App</h3>
+                        <p>Secure real-time messaging platform</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="branding">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder branding-placeholder">
+                            <i class="fas fa-store"></i>
+                            <span>Restaurant Brand</span>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="portfolio-btn" data-lightbox="portfolio6">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="portfolio-btn">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Restaurant Branding</h3>
+                        <p>Complete visual identity for fine dining</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <div class="section-header">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-description">Real feedback from amazing people we've worked with</p>
+            </div>
+            <div class="testimonials-carousel">
+                <div class="testimonial-track">
+                    <div class="testimonial-card active">
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"Absolutely incredible work! The team delivered beyond our expectations and the attention to detail was outstanding. Our conversion rate increased by 300%!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <div class="avatar-placeholder">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            </div>
+                            <div class="author-info">
+                                <h4>Sarah Johnson</h4>
+                                <span>CEO, TechStart Inc.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"Professional, creative, and efficient. They transformed our outdated website into a modern masterpiece. The user experience is now seamless and beautiful."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <div class="avatar-placeholder">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            </div>
+                            <div class="author-info">
+                                <h4>Michael Chen</h4>
+                                <span>Founder, Creative Studios</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"The mobile app they developed for us is simply amazing. Clean design, smooth performance, and our users love it. Downloads increased by 500%!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <div class="avatar-placeholder">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            </div>
+                            <div class="author-info">
+                                <h4>Emily Rodriguez</h4>
+                                <span>Product Manager, FitLife</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-nav">
+                    <button class="testimonial-prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="testimonial-dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                    </div>
+                    <button class="testimonial-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing">
+            <div class="section-header">
+                <h2 class="section-title">Choose Your Plan</h2>
+                <p class="section-description">Flexible pricing options to fit your needs</p>
+            </div>
+            <div class="pricing-toggle">
+                <span class="toggle-label">Monthly</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="pricingToggle">
+                    <span class="toggle-slider"></span>
+                </label>
+                <span class="toggle-label">
+                    Yearly
+                    <span class="discount-badge">Save 20%</span>
+                </span>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Starter</h3>
+                        <div class="pricing-price">
+                            <span class="currency">$</span>
+                            <span class="amount monthly">29</span>
+                            <span class="amount yearly hidden">279</span>
+                            <span class="period monthly">/month</span>
+                            <span class="period yearly hidden">/year</span>
+                        </div>
+                        <p>Perfect for small projects</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Up to 5 projects</li>
+                            <li><i class="fas fa-check"></i> Basic support</li>
+                            <li><i class="fas fa-check"></i> 10GB storage</li>
+                            <li><i class="fas fa-check"></i> Standard templates</li>
+                            <li><i class="fas fa-times"></i> Priority support</li>
+                            <li><i class="fas fa-times"></i> Custom integrations</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-secondary pricing-btn">Get Started</button>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Professional</h3>
+                        <div class="pricing-price">
+                            <span class="currency">$</span>
+                            <span class="amount monthly">79</span>
+                            <span class="amount yearly hidden">759</span>
+                            <span class="period monthly">/month</span>
+                            <span class="period yearly hidden">/year</span>
+                        </div>
+                        <p>Best for growing businesses</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Unlimited projects</li>
+                            <li><i class="fas fa-check"></i> Priority support</li>
+                            <li><i class="fas fa-check"></i> 100GB storage</li>
+                            <li><i class="fas fa-check"></i> Premium templates</li>
+                            <li><i class="fas fa-check"></i> Advanced analytics</li>
+                            <li><i class="fas fa-check"></i> Custom integrations</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-primary pricing-btn">Get Started</button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Enterprise</h3>
+                        <div class="pricing-price">
+                            <span class="currency">$</span>
+                            <span class="amount monthly">199</span>
+                            <span class="amount yearly hidden">1909</span>
+                            <span class="period monthly">/month</span>
+                            <span class="period yearly hidden">/year</span>
+                        </div>
+                        <p>For large organizations</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Everything in Pro</li>
+                            <li><i class="fas fa-check"></i> 24/7 dedicated support</li>
+                            <li><i class="fas fa-check"></i> Unlimited storage</li>
+                            <li><i class="fas fa-check"></i> White-label solution</li>
+                            <li><i class="fas fa-check"></i> Custom development</li>
+                            <li><i class="fas fa-check"></i> SLA guarantee</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-secondary pricing-btn">Contact Sales</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="team">
+            <div class="section-header">
+                <h2 class="section-title">Meet Our Team</h2>
+                <p class="section-description">The talented people behind our success</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <div class="avatar-placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Alex Thompson</h3>
+                        <span>Lead Developer</span>
+                        <p>Full-stack developer with 8+ years of experience in modern web technologies.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <div class="avatar-placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-dribbble"></i></a>
+                            <a href="#"><i class="fab fa-behance"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Sarah Wilson</h3>
+                        <span>UI/UX Designer</span>
+                        <p>Creative designer passionate about creating beautiful and functional user experiences.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <div class="avatar-placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>David Kim</h3>
+                        <span>Project Manager</span>
+                        <p>Experienced PM ensuring projects are delivered on time and exceed expectations.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <div class="avatar-placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Lisa Chen</h3>
+                        <span>Marketing Specialist</span>
+                        <p>Digital marketing expert helping brands reach their target audience effectively.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="blog">
+            <div class="section-header">
+                <h2 class="section-title">Latest Insights</h2>
+                <p class="section-description">Stay updated with our latest thoughts and industry trends</p>
+            </div>
+            <div class="blog-grid">
+                <article class="blog-card featured-post">
+                    <div class="blog-image">
+                        <div class="blog-placeholder">
+                            <i class="fas fa-newspaper"></i>
+                            <span>Featured Article</span>
+                        </div>
+                        <div class="blog-category">Featured</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">
+                                <i class="fas fa-calendar"></i>
+                                March 15, 2024
+                            </span>
+                            <span class="blog-read-time">
+                                <i class="fas fa-clock"></i>
+                                5 min read
+                            </span>
+                        </div>
+                        <h3>The Future of Web Development: Trends to Watch in 2024</h3>
+                        <p>Explore the latest trends shaping the web development landscape, from AI integration to progressive web apps and beyond.</p>
+                        <a href="#" class="blog-link">
+                            Read More
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <div class="blog-placeholder">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Mobile Design</span>
+                        </div>
+                        <div class="blog-category">Design</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">
+                                <i class="fas fa-calendar"></i>
+                                March 10, 2024
+                            </span>
+                            <span class="blog-read-time">
+                                <i class="fas fa-clock"></i>
+                                3 min read
+                            </span>
+                        </div>
+                        <h3>Mobile-First Design: Best Practices</h3>
+                        <p>Learn essential techniques for creating responsive designs that work beautifully on all devices.</p>
+                        <a href="#" class="blog-link">
+                            Read More
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <div class="blog-placeholder">
+                            <i class="fas fa-code"></i>
+                            <span>Development</span>
+                        </div>
+                        <div class="blog-category">Development</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">
+                                <i class="fas fa-calendar"></i>
+                                March 5, 2024
+                            </span>
+                            <span class="blog-read-time">
+                                <i class="fas fa-clock"></i>
+                                4 min read
+                            </span>
+                        </div>
+                        <h3>JavaScript Frameworks Comparison 2024</h3>
+                        <p>A comprehensive comparison of popular JavaScript frameworks and when to use each one.</p>
+                        <a href="#" class="blog-link">
+                            Read More
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-description">Find answers to common questions about our services</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question active">
+                        <span>What services do you offer?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer active">
+                        <p>We offer a comprehensive range of digital services including web development, mobile app development, UI/UX design, branding, and digital marketing. Our team specializes in creating custom solutions tailored to your specific business needs.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How long does a typical project take?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Project timelines vary depending on scope and complexity. A simple website typically takes 2-4 weeks, while complex web applications can take 3-6 months. We provide detailed timelines during the initial consultation phase.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do you provide ongoing support?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, we offer comprehensive ongoing support and maintenance packages. This includes regular updates, security monitoring, performance optimization, and technical support to ensure your digital assets remain secure and up-to-date.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can you work with existing systems?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely! We have extensive experience integrating with existing systems, APIs, and databases. Whether you need to modernize legacy systems or add new features to existing platforms, we can help.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What is your pricing structure?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our pricing is project-based and depends on the scope, complexity, and timeline. We offer transparent pricing with no hidden fees. Contact us for a detailed quote based on your specific requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2>Stay Updated</h2>
+                    <p>Subscribe to our newsletter for the latest updates, tips, and exclusive content.</p>
+                </div>
+                <form class="newsletter-form" id="newsletterForm">
+                    <div class="newsletter-input-group">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Subscribe
+                        </button>
+                    </div>
+                    <p class="newsletter-privacy">
+                        <i class="fas fa-lock"></i>
+                        We respect your privacy. Unsubscribe at any time.
+                    </p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-description">We'd love to hear from you</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Our Office</h4>
+                            <p>123 Business Street<br>Tech City, TC 12345</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Call Us</h4>
+                            <p>+1 (555) 123-4567<br>Mon-Fri 9AM-6PM</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email Us</h4>
+                            <p>hello@webapp.com<br>support@webapp.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="name" required>
+                                <label for="name">Your Name</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" required>
+                                <label for="email">Your Email</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" required>
+                            <label for="subject">Subject</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" required></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fas fa-rocket"></i>
+                        <span>WebApp</span>
+                    </div>
+                    <p>Creating beautiful web experiences with modern technology.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WebApp. Made with ❤️</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="enhanced-features.js"></script>
+</body>
+</html>
