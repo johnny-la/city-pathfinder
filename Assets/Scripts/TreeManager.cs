@@ -219,6 +219,8 @@ public class TreeManager : MonoBehaviour
         foreach (Tree tree in trees)
         {
             float previousHealth = tree.health;
+            float previousHeight = tree.height;
+            
             tree.UpdateTree(growthUpdateInterval);
             
             // Update visual representation if tree has grown
@@ -227,10 +229,23 @@ public class TreeManager : MonoBehaviour
                 UpdateTreeGameObject(tree, treeGameObjects[tree.id]);
             }
             
+            // Fire growth event if tree has grown significantly
+            if (tree.height - previousHeight > 0.1f)
+            {
+                TreeEventSystem.TriggerTreeGrowthEvent(tree, previousHeight);
+            }
+            
             // Fire health changed event if health changed significantly
             if (Mathf.Abs(tree.health - previousHealth) > 1f)
             {
                 OnTreeHealthChanged?.Invoke(tree);
+            }
+            
+            // Check for tree death
+            if (tree.health <= 0f && previousHealth > 0f)
+            {
+                TreeEventSystem.TriggerTreeDeathEvent(tree);
+                // In a full implementation, you might remove the tree here
             }
         }
     }

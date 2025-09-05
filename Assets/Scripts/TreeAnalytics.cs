@@ -65,6 +65,9 @@ public class TreeAnalytics : MonoBehaviour
             StoreHistoricalData(allTrees);
         }
         
+        // Fire analytics updated event
+        TreeEventSystem.TriggerAnalyticsUpdatedEvent(CurrentAnalytics);
+        
         Debug.Log($"Analytics Updated: {allTrees.Count} trees analyzed");
     }
     

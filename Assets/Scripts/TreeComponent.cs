@@ -92,6 +92,9 @@ public class TreeComponent : MonoBehaviour
     {
         if (treeData != null)
         {
+            // Fire interaction event
+            TreeEventSystem.TriggerTreeInteractionEvent(treeData, TreeInteractionType.Clicked);
+            
             // Log this specific tree
             TreeLogger logger = FindObjectOfType<TreeLogger>();
             if (logger != null)
