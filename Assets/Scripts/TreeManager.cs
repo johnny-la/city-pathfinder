@@ -290,12 +290,18 @@ public class TreeManager : MonoBehaviour
     /// </summary>
     private GameObject GetTreePrefab(TreeType treeType)
     {
-        if (treePrefabs != null && treePrefabs.Length > (int)treeType)
+        if (treePrefabs != null && treePrefabs.Length > (int)treeType && treePrefabs[(int)treeType] != null)
         {
             return treePrefabs[(int)treeType];
         }
         
-        return defaultTreePrefab;
+        if (defaultTreePrefab != null)
+        {
+            return defaultTreePrefab;
+        }
+        
+        // Fallback: create a procedural tree prefab
+        return TreePrefabGenerator.CreateSimpleTreePrefab(treeType);
     }
     
     /// <summary>
