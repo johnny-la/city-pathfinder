@@ -338,7 +338,7 @@ public class Grid : MonoBehaviour {
                         Edge tempEdge2 = new Edge(e, n);
                         tempEdge2.path = temp;
                         tempEdge2.distance = tempDistance;
-                        e.AddEdge(e, tempEdge2);
+                        e.AddEdge(n, tempEdge2);
 
                         
                         
@@ -366,11 +366,11 @@ public class Grid : MonoBehaviour {
         }
         else if (vertChoice && !horizChoice) //north
         {
-            clusterDifference = 6;
+            clusterDifference = numberOfRows;
         }
         else //south
         {
-            clusterDifference = -6;
+            clusterDifference = -numberOfRows;
         }
 
         //Add the nodes to their clusters

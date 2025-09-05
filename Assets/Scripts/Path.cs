@@ -118,7 +118,7 @@ public class Path : MonoBehaviour
 
                 //Calculate edgecost based on what kind of neighbour we have
                 float edgeCost;
-                if (currentNode.gridX != neighbour.gridX && currentNode.gridY != neighbour.gridX)
+                if (currentNode.gridX != neighbour.gridX && currentNode.gridY != neighbour.gridY)
                 {
                     edgeCost = 1.414f;
                 }

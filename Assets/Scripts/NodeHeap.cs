@@ -54,7 +54,7 @@ public class FNodeHeap
     //Returns true if heap contains Node, else false
     public bool Contains(Node item)
     {
-        return Equals(items[item.HeapIndex], item);
+        return item.HeapIndex >= 0 && item.HeapIndex < currentItemCount && Equals(items[item.HeapIndex], item);
     }
 
     //Keep swapping Node item with its children until its fcost is less than both of its children
