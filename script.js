@@ -374,4 +374,35 @@ function createParticle() {
 // Create particles occasionally
 setInterval(createParticle, 2000);
 
-console.log('🚀 Beautiful Web App loaded successfully!');
+// Loading screen
+window.addEventListener('load', () => {
+    const loadingScreen = document.getElementById('loadingScreen');
+    
+    setTimeout(() => {
+        loadingScreen.classList.add('hidden');
+        setTimeout(() => {
+            loadingScreen.remove();
+        }, 500);
+    }, 1500);
+});
+
+// Mobile menu toggle
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', () => {
+        mobileMenuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+}
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenuToggle?.classList.remove('active');
+        navLinks?.classList.remove('active');
+    });
+});
+
+console.log('🚀 Enhanced Beautiful Web App loaded successfully with all features!');
