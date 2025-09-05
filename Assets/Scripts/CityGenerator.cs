@@ -19,6 +19,13 @@ public class CityGenerator : MonoBehaviour
     [TooltipAttribute("The number of octaves used in the perlin noise generation")]
     public int octaves = 4;
 
+    [Header("Tree Integration")]
+    [TooltipAttribute("Enable tree generation alongside buildings")]
+    public bool generateTrees = true;
+    
+    [TooltipAttribute("Reference to the TreeManager component")]
+    public TreeManager treeManager;
+
     // The perlin noise generator used to determine building heights
     private PerlinNoise perlinNoise;
 
@@ -40,6 +47,12 @@ public class CityGenerator : MonoBehaviour
         // Create the perlin noise generator
         perlinNoise = new PerlinNoise(octaves);
 
+        // Find TreeManager if not assigned
+        if (treeManager == null)
+        {
+            treeManager = FindObjectOfType<TreeManager>();
+        }
+
         GenerateCity();
     }
     
@@ -59,6 +72,18 @@ public class CityGenerator : MonoBehaviour
                 
                 CreateBuilding(buildingPosition,buildingHeight);
             }
+        }
+        
+        // Generate trees after buildings are created
+        if (generateTrees && treeManager != null)
+        {
+            Debug.Log("CityGenerator: Triggering tree generation...");
+            // Configure tree manager based on city settings
+            treeManager.generationAreaCenter = transform.position;
+            treeManager.generationAreaSize = new Vector2(citySize, citySize);
+            
+            // Generate trees (TreeManager will handle avoiding buildings)
+            treeManager.GenerateTrees();
         }
     }
 
