@@ -65,6 +65,11 @@ public class TreeLogger : MonoBehaviour
         {
             LogTreesToConsole();
         }
+        
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            GenerateAnalyticsReport();
+        }
     }
     
     /// <summary>
@@ -331,6 +336,11 @@ public class TreeLogger : MonoBehaviour
             LogTreesToConsole();
         }
         
+        if (GUILayout.Button("Analytics Report"))
+        {
+            GenerateAnalyticsReport();
+        }
+        
         GUILayout.Space(10);
         
         enableAutoLogging = GUILayout.Toggle(enableAutoLogging, "Auto Logging");
@@ -341,4 +351,37 @@ public class TreeLogger : MonoBehaviour
         GUILayout.EndVertical();
         GUILayout.EndArea();
     }
-}
+    
+    /// <summary>
+    /// Generates and logs an analytics report
+    /// </summary>
+    public void GenerateAnalyticsReport()
+    {
+        TreeAnalytics analytics = FindObjectOfType<TreeAnalytics>();
+        if (analytics == null)
+        {
+            Debug.LogWarning("TreeAnalytics component not found! Add TreeAnalytics to generate reports.");
+            return;
+        }
+        
+        string report = analytics.GenerateAnalyticsReport();
+        Debug.Log(report);
+        
+        // Also save to file if enabled
+        if (enableFileLogging)
+        {
+            try
+            {
+                string timestamp = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+                string fileName = $"tree_analytics_{timestamp}.txt";
+                string filePath = Path.Combine(fullLogDirectory, fileName);
+                
+                File.WriteAllText(filePath, report);
+                Debug.Log($"Analytics report saved to: {filePath}");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Failed to save analytics report: {e.Message}");
+            }
+        }
+    }
